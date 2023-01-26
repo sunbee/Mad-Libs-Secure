@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Signup/Login Page</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+        #container {
+            width: 400px;
+            margin: 0 auto;
+        }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div id="signup-form" class="form">
+        <h1>Signup</h1>
+        <form action="/add_me" method="POST">
+          <input type="email" id="uid" placeholder="Email" required>
+          <input type="password" id="pwd" placeholder="Password" required>
+          <input type="submit" value="Signup">
+        </form>
+        <p>Already have an account? <a href="#" id="toggle-login">Login</a></p>
+      </div>
+      <div id="login-form" class="form" style="display: none;">
+        <h1>Login</h1>
+        <form action="/token" method="POST">
+          <input type="email" id="uid" name="uid" placeholder="Email" required>
+          <input type="password" id="pwd" name="pwd" placeholder="Password" required>
+          <input type="submit" value="Login">
+        </form>
+        <p>Don't have an account? <a href="#" id="toggle-signup">Signup</a></p>
+      </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        // JavaScript code to toggle between the signup and login form
+        const signupForm = document.getElementById("signup-form");
+        const loginForm = document.getElementById("login-form");
+
+        document.getElementById("toggle-signup").addEventListener("click", (e) => {
+            e.preventDefault();
+            signupForm.style.display = "block";
+            loginForm.style.display = "none";
+        });
+
+        document.getElementById("toggle-login").addEventListener("click", (e) => {
+            e.preventDefault();
+            signupForm.style.display = "none";
+            loginForm.style.display = "block";
+        });
+    </script>
+  </body>
+</html>
